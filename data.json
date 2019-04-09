@@ -1,10 +1,4 @@
 {
-  "message": "验证成功",
-  "data": {
-    "id": 9527,
-    "username": "ddd",
-    "email": "test@gmail. com",
-    "tel": "13800138000"
-  },
-  "code": 1
+  "id": 1,
+  "name": "Have fun"
 }

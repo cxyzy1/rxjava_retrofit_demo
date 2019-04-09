@@ -1,7 +1,7 @@
 package com.cxyzy.demo;
 
 import android.os.Bundle;
-import android.view.View;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -15,7 +15,8 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
-    private static final String BASE_URL = "http://192.168.6.109:8080/";
+
+    private static final String BASE_URL = "https://raw.githubusercontent.com/cxyzy1/rxjava_retrofit_demo/master/";
     private TextView tv_content;
 
     @Override
@@ -23,9 +24,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         tv_content = findViewById(R.id.tv_content);
+        onAction();
     }
 
-    public void onAction(View view) {
+    public void onAction() {
 
 
         //创建Retrofit对象
@@ -37,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         //获取UserMsgService对象
         UserMsgService userMsgService = retrofit.create(UserMsgService.class);
 
-        userMsgService.login("zhangsan", "123456")
+        userMsgService.query()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<UserInfoModel>() {
@@ -53,11 +55,14 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onError(Throwable e) {
+                        Log.v("",e.getMessage());
+                        int i = 0;
                         //请求失败的情况
                     }
 
                     @Override
                     public void onComplete() {
+                        int i = 0;
 
                     }
                 });
