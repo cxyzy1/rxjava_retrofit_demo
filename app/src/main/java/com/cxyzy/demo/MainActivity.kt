@@ -31,14 +31,13 @@ class MainActivity : AppCompatActivity() {
                 .build()
 
         //获取UserMsgService对象
-        val userMsgService = retrofit.create(NetworkService::class.java)
+        val networkService = retrofit.create(NetworkService::class.java)
 
-        userMsgService.query()
+        networkService.query()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(object : Observer<Task> {
                     override fun onSubscribe(d: Disposable) {
-
                     }
 
                     override fun onNext(task: Task) {
