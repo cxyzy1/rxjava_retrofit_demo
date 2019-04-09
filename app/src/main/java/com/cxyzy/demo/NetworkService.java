@@ -5,6 +5,6 @@ import retrofit2.http.GET;
 
 public interface NetworkService {
 
-    @GET("data.json")
+    @GET("cxyzy1/rxjava_retrofit_demo/master/data.json")
     Observable<Task> query();
 }

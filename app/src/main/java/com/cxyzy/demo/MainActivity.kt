@@ -15,7 +15,6 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class MainActivity : AppCompatActivity() {
-    private val BASE_URL = "https://raw.githubusercontent.com/cxyzy1/rxjava_retrofit_demo/master/"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,13 +23,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun queryData() {
-        //创建Retrofit对象
-        val retrofit = Retrofit.Builder().baseUrl(BASE_URL)
+        val retrofit = Retrofit.Builder()
+                .baseUrl("https://raw.githubusercontent.com/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build()
 
-        //获取UserMsgService对象
         val networkService = retrofit.create(NetworkService::class.java)
 
         networkService.query()
