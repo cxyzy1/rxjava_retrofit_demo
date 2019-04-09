@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">Demo</string>
+    <string name="app_name">RxJavaRetrofitDemo</string>
+    <string name="wait_a_minute">wait a minute</string>
 </resources>
